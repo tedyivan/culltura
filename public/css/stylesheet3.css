@@ -1,0 +1,60 @@
+#slider{
+	background: url(../images/wood.png);
+	height: 600px;
+}
+
+.navbar-default{
+	background: transparent;
+
+}
+
+.navbar-default {
+	padding-top: 4px;
+	background: url(../images/wood.png);
+    /*background-color: rgba(255, 255, 255, 0.5);*/
+    border-color: transparent;
+    font-size: 21px;
+    
+}
+
+.imgSlider{
+	max-height: 250px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #fff;
+}
+ 
+.item{
+	min-height: 250px;
+	padding: 150px;
+	color: white;
+}
+
+.item h2{
+	text-align: center;
+	border: 3px solid #fff;
+	padding: 5px;
+}
+
+.item span{
+	color: green;
+}
+
+.carousel-indicators .active {
+	background-color: green;
+}
+
+#bootom{
+	background: url(../images/wood.png);
+	height: 100px;
+	text-align: center;
+	color: #fff;
+	margin-top: 100px;
+}
+.text-button{
+	margin-top: 10px;
+}
