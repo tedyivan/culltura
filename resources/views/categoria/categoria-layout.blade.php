@@ -8,6 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css') }}">
 	<link rel="stylesheet"  href="{{ asset('/css/stylesheet3.css') }}">
 	<script type="text/javascript" src="{{ asset('/js/todasScripts.js')}}"></script>
+	<link rel="stylesheet"  href="{{ asset('/css/stylesheet3.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 </head>
 <body>
