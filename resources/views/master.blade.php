@@ -7,7 +7,7 @@
     <script type="text/javascript" src="{{ asset('/js/bootstrap.min.js')}}"></script>
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.min.css') }}">
 	<link rel="stylesheet"  href="{{ asset('/css/stylesheet3.css') }}">
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 </head>
 <body>
@@ -21,7 +21,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
+				<a class="navbar-brand" href="#">Logo</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -21,7 +21,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
+				<a class="navbar-brand" href="#">Logo</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -93,12 +93,14 @@
 -->
 	
 <section id="bootom">
+	<div class="container">
 	<div class="row footerr">
 	<div class="form-group text-button">
 		<label class="lb-text">Contactos: </label><label class="lb-cnt">8412345566</label><br>
 		<label class="lb-text">Email: </label><label class="lb-cnt">cultura@cultura.com</label>
 	</div>
 
+	</div>
 	</div>
 </section>	 
 
