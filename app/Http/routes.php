@@ -32,3 +32,5 @@ Route::resource('produto', 'ProdutoController');
 Route::resource('image','ImageController');
 
 Route::resource('administrador','AdministradorController');
+
+

@@ -46,6 +46,7 @@
 
 
 				{!! Form::close() !!}
+				<!--{!! delete_form(['categoria.destroy',$categoria->id]) !!}-->
 			</div>
 
 			

@@ -9,6 +9,13 @@
 				text-align: right;
 				margin-top: 40px;
 			}
+			.submeter{
+				/* back white  e sem border    */
+				 background: #fff;
+    			 border: 0px solid #ccc;
+
+			}
+			
 			
 	</style>
 	
@@ -44,7 +51,18 @@
 							        @endforeach
 							        
 							        
-							        <td><a href="/produto/{{ $produto->id }}/edit">editar<span></span></a></td>
+							        <td><form action="/produto/{{ $produto->id }}/edit">
+								        		<button class="submeter" type="submit"><span class="glyphicon glyphicon-edit"></span></button>
+								        </form>
+
+								        {!! Form::open(['method' => 'DELETE', 'route' =>['produto.destroy', $produto->id]]) !!}
+								        	<button class="submeter" type="submit"><span class=" glyphicon glyphicon-remove" ></span></button>
+								        {!! Form::close() !!}
+
+
+
+
+							        </td>
 									
 								</tr>
 							@endforeach

@@ -17,7 +17,7 @@
 
 				
 				<div class="col-md-10">
-					<h3>Informaço do usuario</h3>
+					<h3>Informação do usuario</h3>
 						
 					<form class="form-horizontal" role="form" >
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">

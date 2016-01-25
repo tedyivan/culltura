@@ -18,11 +18,13 @@
 				text-align: center;
 			}
 			.imgcima img{
-				max-height: 400px;
-				max-width: 600px;
+				/*max-height: 300px;
+				max-width: 450px;
+				*/
 				display: block;
 			    margin-left: auto;
 			    margin-right: auto;
+
 			}
 			.btn-add-img{
 				margin-top: 10px;
@@ -111,22 +113,25 @@
 
 	<section id="abaut">
 		<div class="row conteudo">
-		<div class="col-md-3"></div>
+		<div class="col-md-3 "></div>
 		
 
-		<div class="col-md-4">
+		<div class="col-xs-12 col-md-4">
 			
 			<div class="row cima">
-				<div class="imgcima">
-				<img src="{{ asset($images->first()->file) }}" height="400px" width="500px" id="cima"/> 
+			    <div class="col-xs-8 col-xs-offset-2">
+					<div class="imgcima ">
+					<img src="{{ asset($images->first()->file) }}" class="img-responsive" height="400px" width="500px"  id="cima"/> 
+					</div>
 				</div>
-			</div>	
+			</div>
+				
 
 			<div class="row baixos">
 			@foreach($images as $image)
-			 	<div class="col-md-4">
+			 	<div class="col-md-4 col-xs-4 ">
 					<div class="baixos-icon">
-						<img src="{{ asset($image->file) }}" height="150px" width="150px" id="imgClickAndChange" onclick="changeImage('{{ asset($image->file) }}')" />
+						<img src="{{ asset($image->file) }}" class="img-responsive" height="150px" width="150px" id="imgClickAndChange" onclick="changeImage('{{ asset($image->file) }}')" />
 						<div class="baixos-overlay">
 							<i type="hidden" onclick="changeImage('{{ asset($image->file) }}')" class="lupa glyphicon glyphicon-zoom-in"></i>
 						</div>

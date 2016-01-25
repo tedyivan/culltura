@@ -212,6 +212,12 @@ class ProdutoController extends Controller {
 	public function destroy($id)
 	{
 		//
+
+		$produto = Produto::whereId($id)->first();
+		$images = Image::whereProduto_id($produto->id)->delete();
+		$produto ->delete();
+
+		return redirect('produto/'); 
 	}
 
 	/**

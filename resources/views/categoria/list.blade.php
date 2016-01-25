@@ -9,6 +9,12 @@
 				text-align: right;
 				margin-top: 40px;
 			}
+			.submeter{
+				/* back white  e sem border    */
+				 background: #fff;
+    			 border: 0px solid #ccc;
+
+			}
 			
 	</style>
 	<div class="container">
@@ -26,6 +32,7 @@
 								    
 								        <th><strong>Designacao</strong></th>
 								    	<th><strong>Descricao</strong></th>
+								    	<th>opcões</th>
 								    </tr>           
 
 								@foreach($categorias as $categoria)
@@ -34,11 +41,16 @@
 								        <td><a href="/categoria/{{ $categoria->id }}">{!! $categoria->designacao!!}</a></td>
 								        <td>{!! $categoria->descricao !!}</td>
 								        <td>
-								        	<a href="/categoria/{{ $categoria->id }}/edit">editar<span></span></a>
-								        	
+								        	<form action="/categoria/{{ $categoria->id }}/edit">
+								        		<button class="submeter" type="submit"><span class="glyphicon glyphicon-edit"></span></button>
+								        	</form>
 
+								        	{!! Form::open(['method' => 'DELETE', 'route' =>['categoria.destroy', $categoria->id]]) !!}
+								        		<button class="submeter" type="submit"><span class=" glyphicon glyphicon-remove" ></span></button>
+								        	{!! Form::close() !!}
+								       
 								        </td>
-
+								       
 										
 									</tr>
 								@endforeach

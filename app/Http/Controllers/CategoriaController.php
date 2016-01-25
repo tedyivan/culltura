@@ -114,8 +114,11 @@ class CategoriaController extends Controller {
 	 * @return Response
 	 */
 	public function destroy($id)
-	{
-		//
+	{   
+		$categoria = Categoria::whereId($id)->first();
+		$categoria->delete();
+		
+		return redirect('categoria/');
 	}
 
 }
