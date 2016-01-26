@@ -22,15 +22,35 @@ Route::controllers([
 
 //Route::get('categoria','CategoriaController@index');
 Route::resource('categoria','CategoriaController');
+Route::group(['middleware' => 'auth'], function ()
+{
+
+	Route::resource('categoria','CategoriaController',['except' => ['index','show']]);
+});
+
+
 
 Route::get('produtos/{categoria}','ProdutoController@produtos');
 
+
+
+
 Route::resource('produto', 'ProdutoController'); 
+
+Route::group(['middleware' => 'auth'], function ()
+{
+	
+	Route::resource('produto', 'ProdutoController',['except' => ['index','show']]);
+
+});
 
 
 
 Route::resource('image','ImageController');
 
-Route::resource('administrador','AdministradorController');
-
+Route::group(['middleware' => 'auth'], function ()
+{
+	Route::resource('administrador','AdministradorController',['only' => ['index']]);
+	
+});
 

@@ -75,10 +75,11 @@
 						</div>
 								
 					</div>
-					<div class="col-md-1 btn-lateral ">
+				
+				<!--	<div class="col-md-1 btn-lateral ">
 						<a class="btn btn-primary" href="{{ url('/produto/create') }}">adicionar <span class="glyphicon glyphicon-plus"></span></a>
 					</div>
-
+				-->
 
 
 				</div>

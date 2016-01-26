@@ -20,7 +20,7 @@
 	</style>
 	
 	<div class="container">
-			<div class="row formulario">
+			<div class="row formulario hidden-xs">
 
 				
 				<div class="col-md-10">
