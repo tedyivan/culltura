@@ -24,8 +24,10 @@
 				margin-bottom: 50px;}
 			.dvnome{
 				text-align: left;
+				
 			}
 
+			
 			.carousel-control.left, .carousel-control.right {
 				   background-image:none;
 				   filter:none;
@@ -38,6 +40,29 @@
 			  min-width: 90%;
 			  max-width: 90%;
 			  height: 500px;
+			}
+
+			
+			.gold{
+				color: #FFDF00;
+			}
+
+			.lbnome{
+				font-size:large; 
+				
+
+			}
+
+			.lbpreco{
+				font-size:medium;
+
+			}
+
+			.lbcaption{
+				background: black;
+			}
+			.letrascaorousel{
+				padding-top: 20%;
 			}
 
 
@@ -54,7 +79,7 @@
 							@foreach($produtos_imgs as $produto_img)
 							 	<div class="col-md-4 cadaproduto">
 									<div class="dvnome">
-										<h4>{{ $produto_img->nome }}</h4>
+										<label class="lbnome">{{ $produto_img->nome }}</label>
 									</div>
 									<div class="thumbnail">
 										<img src="{{ asset($produto_img->file) }}" height="300px" width="300px" id="imgClickAndChange" onclick="changeImage('{{ asset($produto_img->file) }}')" />
@@ -66,7 +91,7 @@
 
 									</div>
 									<div class="dvpreco">
-										<h4>Preço: {{ $produto_img->preco }} mt</h4>
+										<span class="glyphicon glyphicon-star gold"></span>	<label class="lbpreco">Preço: {{ $produto_img->preco }} mt</label> <span class="glyphicon glyphicon-star gold"></span>
 									</div>
 								</div>
 							@endforeach
@@ -86,7 +111,7 @@
 
 				<div class="row formulario hidden-lg">
 				<div class="hidden-lg">
-							
+							<h3>Produtos</h3>
 							<div id="carouselProduto" class="carousel slide" data-ride="carousel" data-interval="false" >
 								  <!-- Indicators -->
 								  <!--
@@ -106,13 +131,21 @@
 												<div class="item active">
 
 										           <img src="{{ asset($produto_img->file) }}" id="imgClickAndChange" onclick="changeImage('{{ asset($produto_img->file) }}')" />
-									      		
+									      		   <div class="carousel-caption">
+									      		   		<label class="lbcaption">{{ $produto_img->nome }}</label><br>
+									      		   		<label class="lbcaption">{{ $produto_img->preco }}</label>	
+									      		   </div>	
+
 									      		</div>
 										    
 										    @else
 										    
 										    <div class="item">
 										    	   <img src="{{ asset($produto_img->file) }}" id="imgClickAndChange" onclick="changeImage('{{ asset($produto_img->file) }}')" />
+										   		   <div class="carousel-caption letrascaorousel">
+									      		   		<label class="lbcaption">{{ $produto_img->nome }}</label><br>
+									      		   		<label class="lbcaption">{{ $produto_img->preco }}</label>	
+									      		   </div>	
 										    </div>
 										    
 										    @endif

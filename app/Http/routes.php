@@ -50,7 +50,7 @@ Route::resource('image','ImageController');
 
 Route::group(['middleware' => 'auth'], function ()
 {
-	Route::resource('administrador','AdministradorController',['only' => ['index']]);
+	Route::resource('administrador','AdministradorController',['only' => ['index','show']]);
 	
 });
 

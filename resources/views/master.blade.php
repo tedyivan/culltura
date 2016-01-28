@@ -32,25 +32,40 @@
 					<li class="dropdown">
 					          <a href=" " class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produtos <span class="caret"></span></a>
 					          <ul class="dropdown-menu" role="menu">
-					            <li><a href="#">Cadeiras</a></li>
-					            <li><a href="#">Mesas</a></li>
-					            <li><a href="#">Esculturas</a></li>
+					            <li><a href="/produtos/cadeira">Cadeiras</a></li>
+					            <li><a href="/produtos/mesa">Mesas</a></li>
+					            <li><a href="/produtos/objecto">Objectos</a></li>
 					            <li role="separator" class="divider"></li>
-					            <li><a href="#">Outros</a></li>
+					            <li><a href="/produto">Todos</a></li>
 					          </ul>
 					</li>
-					 
+					
+					<li class="dropdown" role="menu">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Serviços
+						<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/produto">Produtos</a></li>
+							<li><a href="/categoria">Categorias</a></li>
+							<li><a href="/administrador">Usuarios</a></li>
+
+					 </ul>	
+					
+					</li>
+					
+
+					@if(Auth::check()) 
 					<li class="dropdown" role="menu">
 						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administracao
 						<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/produto">Produtos</a></li>
 							<li><a href="/categoria">Categorias</a></li>
+							<li><a href="/administrador">Usuarios</a></li>
 
 					 </ul>	
 					
 					</li>
-					        
+					@endif        
 					        <li><a href="#">Galeria</a></li>
 					        <li><a href="#">Acerca</a></li>
 					 
