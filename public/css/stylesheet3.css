@@ -58,3 +58,29 @@
 .text-button{
 	margin-top: 10px;
 }
+
+#about{
+	padding: 100px 0;
+	background: #eee;
+}
+.about-content{
+	background-color: blue;
+	height: 100%;
+}
+
+.about-top h2{
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.about-top p{
+	font-size: 16px;
+	max-width: 700px
+	margin:0 auto;
+	padding-bottom: 50px;
+}
+
+.titulo{
+	text-align: center;
+}
+

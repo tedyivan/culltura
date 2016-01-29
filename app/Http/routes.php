@@ -54,3 +54,5 @@ Route::group(['middleware' => 'auth'], function ()
 	
 });
 
+Route::resource('texto','TextoController');
+

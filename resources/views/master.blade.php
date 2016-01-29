@@ -46,6 +46,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="/produto">Produtos</a></li>
 							<li><a href="/categoria">Categorias</a></li>
+							<li><a href="/texto">Textos</a></li>
 							<li><a href="/administrador">Usuarios</a></li>
 
 					 </ul>	
@@ -96,6 +97,17 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 -->
+<section id="bootom">
+	<div class="container">
+	<div class="row footerr">
+	<div class="form-group text-button">
+		<label class="lb-text">Contactos: </label><label class="lb-cnt">8412345566</label><br>
+		<label class="lb-text">Email: </label><label class="lb-cnt">cultura@cultura.com</label>
+	</div>
+
+	</div>
+	</div>
+</section>	 
 
 </body>
 </html>

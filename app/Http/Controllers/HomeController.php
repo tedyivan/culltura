@@ -1,5 +1,19 @@
 <?php namespace App\Http\Controllers;
 
+//adicionado
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+use DB;
+use App\User;
+use App\Texto;
+use App\Categoria;
+use Auth;
+
+
+
+
 class HomeController extends Controller {
 
 	/*
@@ -29,8 +43,9 @@ class HomeController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
-		return view('inicio');
+	{   $categorias = Categoria::all();
+		$textos = Texto::all();
+		return view('inicio',compact('textos','categorias'));
 	}
 
 }
