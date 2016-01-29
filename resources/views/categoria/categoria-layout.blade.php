@@ -34,10 +34,17 @@
 					<li class="dropdown">
 					          <a href=" " class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produtos <span class="caret"></span></a>
 					          <ul class="dropdown-menu" role="menu">
-					            <li><a href="/produtos/cadeira">Cadeiras</a></li>
+					            <!--<li><a href="/produtos/cadeira">Cadeiras</a></li>
 					            <li><a href="/produtos/mesa">Mesas</a></li>
 					            <li><a href="/produtos/objecto">Objectos</a></li>
 					            <li role="separator" class="divider"></li>
+					            <li><a href="/produto">Todas</a></li>
+					          	-->
+					          	@foreach($categorias as $categoria)
+									<li><a href="/produtos/{{$categoria->designacao}}">{!! $categoria->designacao !!}</a></li>
+								@endforeach
+								
+								<li role="separator" class="divider"></li>
 					            <li><a href="/produto">Todas</a></li>
 					          </ul>
 					</li>
@@ -49,7 +56,7 @@
 							<li><a href="/produto">Produtos</a></li>
 							<li><a href="/categoria">Categorias</a></li>
 							<li><a href="/administrador">Usuarios</a></li>
-
+							
 					 </ul>	
 					
 					</li>
@@ -62,6 +69,7 @@
 							<li><a href="/produto">Produtos</a></li>
 							<li><a href="/categoria">Categorias</a></li>
 							<li><a href="/texto">Textos</a></li>
+							<li role="separator" class="divider"></li>
 							<li><a href="/administrador">Usuarios</a></li>
 
 					 </ul>	

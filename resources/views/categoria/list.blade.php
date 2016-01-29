@@ -58,7 +58,7 @@
 						</table>
 				</div>
 				<div class="col-md-2">
-				
+						<a class="btn btn-primary" href="{{ url('/categoria/create') }}">adicionar <span class="glyphicon glyphicon-plus"></span></a>	
 				</div>
 		</div>	
 	</div>

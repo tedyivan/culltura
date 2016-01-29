@@ -46,7 +46,6 @@
 						<ul class="dropdown-menu">
 							<li><a href="/produto">Produtos</a></li>
 							<li><a href="/categoria">Categorias</a></li>
-							<li><a href="/texto">Textos</a></li>
 							<li><a href="/administrador">Usuarios</a></li>
 
 					 </ul>	
@@ -61,6 +60,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="/produto">Produtos</a></li>
 							<li><a href="/categoria">Categorias</a></li>
+							<li><a href="/texto">Textos</a></li>
 							<li><a href="/administrador">Usuarios</a></li>
 
 					 </ul>	

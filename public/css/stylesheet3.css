@@ -73,7 +73,7 @@
 	font-weight: bold;
 }
 
-.about-top p{
+.about-top p,.corpo{
 	font-size: 16px;
 	max-width: 700px
 	margin:0 auto;
@@ -82,5 +82,7 @@
 
 .titulo{
 	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 

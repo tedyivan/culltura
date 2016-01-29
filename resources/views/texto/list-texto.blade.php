@@ -45,7 +45,14 @@
 							        <td>{!! $texto->descricao !!}</td>
 							        <td>{!! $texto->posicao !!}</td>
 				        			<td>{!! $texto->isExist !!}</td>
-                                    <td>{!! $texto->user_id !!}</td>
+                                    <td> <!--{!! $texto->user_id !!}-->
+                                    		@foreach($users as $user)
+                                    			@if($user->id == $texto->user_id)
+                                    				{!! $user->name !!}
+                                    			@endif
+                                    		@endforeach
+
+                                    </td>
                                     <td><form action="/texto/{{ $texto->id }}/edit">
 								        		<button class="submeter" type="submit"><span class="glyphicon glyphicon-edit"></span></button>
 								        </form>

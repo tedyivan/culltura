@@ -230,6 +230,8 @@ class ProdutoController extends Controller {
 
 			$produtos = Produto::whereCategoria_id($categoria->id)->get();
 
+			$categorias = Categoria::all();
+			
 			$produtos_imgs=DB::table('produtos')
 						->where('categoria_id','=',$categoria->id)
 						->join('images','produtos.id','=','images.produto_id')

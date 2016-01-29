@@ -56,3 +56,8 @@ Route::group(['middleware' => 'auth'], function ()
 
 Route::resource('texto','TextoController');
 
+Route::group(['middleware' => 'auth'], function ()
+{
+	Route::resource('texto','TextoController',['only' => ['index','show']]);
+	
+});

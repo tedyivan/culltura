@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use App\User;
+use App\Categoria;
 
 class AdministradorController extends Controller {
 
@@ -18,7 +19,9 @@ class AdministradorController extends Controller {
 	{
 		//
 		$users = DB::table('users')->get();
-		return view('administracao.list-users',compact('users'));
+		$categorias=Categoria::all();
+		
+		return view('administracao.list-users',compact('users','categorias'));
 	}
 
 	/**

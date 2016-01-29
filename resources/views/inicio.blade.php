@@ -40,8 +40,8 @@
          @foreach($textos as $texto)
             <div class="about-top" >
               @if($texto->posicao == 0)
-                <h2>{!!$texto->titulo!!}</h2>
-                <p>{!!$texto->descricao!!}</p>
+                <h2>{!! $texto->titulo !!}</h2>
+                <p>{!! $texto->descricao !!}</p>
               @endif
             </div>
          @endforeach
@@ -72,7 +72,7 @@
       <div class="container">
 
        <h2 class="titulo">Titulo</h2>
-       <p> conteudo assssssssssssssssssssssssssssssssssssss ffffffffffffffffffffffff gggggggggggggggggggggg hhhhhhhhhhhhhhhhhhh jjjjjjjjjjjjjjjjjjjjj</p>
+       <p class="corpo"> conteudo assssssssssssssssssssssssssssssssssssss ffffffffffffffffffffffff gggggggggggggggggggggg hhhhhhhhhhhhhhhhhhh jjjjjjjjjjjjjjjjjjjjj</p>
       </div>
     </section>
     

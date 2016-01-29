@@ -39,8 +39,8 @@ class CategoriaController extends Controller {
 	public function create()
 	{
 		//
-		
-		return view('categoria.add-categoria');
+		$categorias = Categoria::all();		
+		return view('categoria.add-categoria',compact('categorias'));
 
 	}
 
@@ -58,7 +58,7 @@ class CategoriaController extends Controller {
 		$categoria->isexist="true";
 		$categoria->save();
 
-		return redirect('/produto/create');
+		return redirect('/categoria');
 	}
 
 	/**

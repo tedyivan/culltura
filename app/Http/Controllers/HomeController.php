@@ -45,6 +45,7 @@ class HomeController extends Controller {
 	public function index()
 	{   $categorias = Categoria::all();
 		$textos = Texto::all();
+		
 		return view('inicio',compact('textos','categorias'));
 	}
 

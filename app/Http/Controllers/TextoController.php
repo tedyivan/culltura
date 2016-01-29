@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\User;
 use App\Texto;
+use App\Categoria;
 use Auth;
 
 class TextoController extends Controller {
@@ -19,8 +20,9 @@ class TextoController extends Controller {
 	public function index()
 	{
 		$textos= Texto::all();
-
-		return view('texto.list-texto',compact('textos'));
+		$users=User::all();
+		$categorias=Categoria::all();
+		return view('texto.list-texto',compact('textos','users','categorias'));
 	}
 
 	/**
@@ -50,7 +52,7 @@ class TextoController extends Controller {
 		$texto->titulo =$request->input('titulo');
 		$texto->descricao=$request->input('descricao');
 		$texto->posicao=$request->input('posicao');
-		$texto->user_id=$user->id;;
+		$texto->user_id=$user->id;
 		$texto->isExist="true";
 		$texto->save();
 
@@ -77,6 +79,9 @@ class TextoController extends Controller {
 	public function edit($id)
 	{
 		//
+		$texto=Texto::whereId($id)->first();
+		$posicaos=array('0','1','2','3');
+		return view('texto.edit-texto',compact('texto','posicaos'));
 	}
 
 	/**
@@ -85,9 +90,20 @@ class TextoController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id,Request $request)
 	{
 		//
+		$user = Auth::User(); 
+		$texto=Texto::whereId($id)->first();
+		$texto->titulo=$request->get('titulo');
+		$texto->descricao=$request->get('descricao');
+		$texto->posicao=$request->get('posicao');
+		$texto->user_id=$user->id;
+		$texto->isExist=$request->get('estado');
+		
+		$texto->save();
+
+		return redirect('/texto');	
 	}
 
 	/**
@@ -99,6 +115,10 @@ class TextoController extends Controller {
 	public function destroy($id)
 	{
 		//
+		$texto=Texto::whereId($id)->first();
+		$texto->delete();
+
+		return redirect('/texto');
 	}
 
 }
