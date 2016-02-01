@@ -56,24 +56,42 @@ class ImageController extends Controller {
                           ->with('errors', $validation->errors() );
       }
 	*/
-      $image = new Image;
+      
+
+
+
+      $imagens=Image::whereProduto_id($request->input('produto_id'))->get();
+      $nr_imagens=count($imagens);
+
+      
+      if ($nr_imagens < 3 ){
+      	# code...
+      	$image = new Image;
 
       // upload the image //
-      $file = $request->file('userfile');
-      $destination_path = 'uploads/';
-      $filename = str_random(6).'_'.$file->getClientOriginalName();
-      $file->move($destination_path, $filename);
+	      $file = $request->file('userfile');
+	      $destination_path = 'uploads/';
+	      $filename = str_random(6).'_'.$file->getClientOriginalName();
+	      $file->move($destination_path, $filename);
+	      
+	      // save image data into database //
+	      $image->file = $destination_path . $filename;
+	      $image->caption = $request->input('nome');
+	      //$image->description = $request->input('description');
+	      $image->produto_id = $request->input('produto_id');
+	      $image->isexist="true";
+	      $image->save();
+
+	      return redirect('/produto')->with('message','You just uploaded an image!');
+
+      }
+      else {
+      	 return "Excedeu o numero de imagens";
+      }
+
+
+
       
-      // save image data into database //
-      $image->file = $destination_path . $filename;
-      $image->caption = $request->input('nome');
-      //$image->description = $request->input('description');
-      $image->produto_id = $request->input('produto_id');
-      $image->isexist="true";
-      $image->save();
-
-      return redirect('/')->with('message','You just uploaded an image!');
-
 	}
 
 	/**

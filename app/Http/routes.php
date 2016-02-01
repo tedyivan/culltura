@@ -47,6 +47,13 @@ Route::group(['middleware' => 'auth'], function ()
 
 
 Route::resource('image','ImageController');
+Route::group(['middleware' => 'auth'], function ()
+{
+	Route::resource('image','ImageController',['except' => ['index','show']]);
+	
+});
+
+
 
 Route::group(['middleware' => 'auth'], function ()
 {
@@ -61,3 +68,14 @@ Route::group(['middleware' => 'auth'], function ()
 	Route::resource('texto','TextoController',['only' => ['index','show']]);
 	
 });
+
+
+Route::resource('servico','ServicoController');
+
+
+
+
+
+
+
+

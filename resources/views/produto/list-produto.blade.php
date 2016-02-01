@@ -65,6 +65,30 @@
 				padding-top: 20%;
 			}
 
+			.quadro{
+				position: relative;
+				overflow: hidden;
+			}
+
+			.baixos-overlay{
+				position: absolute;
+				background: rgba(0,0,0,.5);
+				width: 100%;
+				height: 100%;
+				
+			}
+			.quadro:hover .baixos-overlay{
+				top:0;
+			} 
+
+			.lupa{
+				font-size: 100px;
+				color: #fff;
+				text-align: center;
+				display: block;
+				
+			    
+			}
 
 	</style>
 	
@@ -81,13 +105,11 @@
 									<div class="dvnome">
 										<label class="lbnome">{{ $produto_img->nome }}</label>
 									</div>
-									<div class="thumbnail">
+									<div class="thumbnail quadro">
 										<img src="{{ asset($produto_img->file) }}" height="300px" width="300px" id="imgClickAndChange" onclick="changeImage('{{ asset($produto_img->file) }}')" />
-										<div class="cada-overlay">
-											<!--<i type="hidden" onclick="changeImage('{{ asset($produto_img->file) }}')" class="lupa glyphicon glyphicon-zoom-in"></i>
-											-->
+										<div class="baixos-overlay">
+											<a href="/produto/{{$produto_img->id}}" class="lupa glyphicon glyphicon-zoom-in"></a>
 										</div>
-										
 
 									</div>
 									<div class="dvpreco">

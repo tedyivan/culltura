@@ -66,8 +66,40 @@
 				margin-left: 70px;
 			}
 
-			
-	
+			.carousel-control {
+			  padding-top:0%;
+			  width:5%;
+			}
+
+			.cada-img>img {
+			  
+			  min-width: 100%;
+			  height: 150px;
+			  padding: 4px;
+			}
+
+			#carousel-baixo{
+				 width: 100%; 
+                 margin: auto;
+                 
+				 padding: 19px;
+				 
+				 
+
+
+			}
+
+			.carousel {
+				height: 120px;
+				position: relative;
+			}
+
+			.carousel-inner{
+				position: relative;
+				width: 100%;
+				overflow: hidden;
+				padding: -20px;
+			}
 
 
 	</style>
@@ -128,6 +160,7 @@
 				
 
 			<div class="row baixos">
+			  <!--VISUALIZACAO EM FRAMES-->
 			@foreach($images as $image)
 			 	<div class="col-md-4 col-xs-4 ">
 					<div class="baixos-icon">
@@ -139,14 +172,54 @@
 
 					</div>
 				</div>
+				
 
 			@endforeach
+			
+			<!--CAROUSEL		
+            <div id="carousel-baixo" class="carousel slide">
+                
+                <!-- Carousel items 
+                <div class="carousel-inner">
+                	
+                    
+                    
+                    <div class="item active">
+                    
+                    @foreach($images as $count=>$image)
+                    		
+                    	<div class="cada-img col-xs-4 col-md-4">
+                            <img src="{{asset(($image->file))}}" alt="Image" class="img-responsive">
+                        	
+                        </div>
+                        
+                     
+                    @endforeach
+                    
+                    </div>
+                   
+                                   
+                    
+                </div>
+                
+                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+            </div>
+            -->
+
 			</div>
 			<div class="row btn-add-img">
+			 @if(count($images) >= 6)
+			 	<h4>O numero de imagens excedida</h4>
+			 @else
 				<a class="btn uppic btn-primary" role="button" data-toggle="modal" href="#upload" data-id="{!! $produto->id !!}">
                Imagem <span class="glyphicon glyphicon-plus"></span>
             	</a>	
+			 @endif		
+			
 			</div>
+
 				
 		</div>		
 		
