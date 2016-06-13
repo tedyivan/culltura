@@ -10,6 +10,7 @@ use App\Categoria;
 use App\Image;
 use Validator;
 use Auth;
+use App\Servico;
 
 
 
@@ -38,15 +39,11 @@ class ProdutoController extends Controller {
 						->get();
 
 
+		$servicos = Servico::all();
 
-
-		if (Auth::check()) {
-			
-			return view('produto.list-adm-produto',compact('produtos','categorias'));
-		} else
-		{
-			return view('produto.list-produto',compact('produtos','categorias','images','produtos_imgs'));		  
-		}
+		
+			return view('produto.list-produtos-todos',compact('produtos','categorias','images','produtos_imgs','servicos'));		  
+		
 
 	}
 
@@ -60,8 +57,9 @@ class ProdutoController extends Controller {
 	{
 		//
 		$categorias = $categoria->get();
+		$servicos = Servico::all();
 
-		return view('produto.add-produto',compact('categorias'));
+		return view('produto.add-produto',compact('categorias','servicos'));
 	}
 
 	/**
@@ -71,54 +69,21 @@ class ProdutoController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		//
-		/*
-		$produto = Produto::create([
-			'nome'=>Input::get('nome'),
-			'preco'=>Input::get('preco'),
-			'descricao'=>Input::get('descricao'),
-			'categoria_id'=>Input::get('categoria_id')
 
-		]);
-		*/
-		//salvamento do produtoo ok
-/*
-		$produto= new Produto;
+		$validation = Validator::make($request->all(), [
+		         'nome'     => 'required|regex:/^[A-Za-z0-9]+$/',
+		         'preco'    =>  'required|Integer|Min:2',
+		         'userfile'     => 'required',
+		         
+		      ]);
 
-		$produto->nome =$request->input('nome');
-		$produto->preco =$request->input('preco');
-		$produto->descricao=$request->input('descricao');
-		$produto->categoria_id=$request->input('categoria_id');
-
-
-
-
-		$produto->save();//well saved
-		var_dump('produto salvo');
-
-		//salvamento da imagem
-			// Validation //
-     
-
-      $image = new Image;
-
-      // upload the image //
-      $file = $request->file('userfile');
-      $destination_path = 'uploads/';
-      $filename = str_random(6).'_'.$file->getClientOriginalName();
-      $file->move($destination_path, $filename);
-      
-      // save image data into database //
-      $image->file = $destination_path . $filename;
-      $image->caption = $request->input('nome');
-      $image->description = $request->input('descricao');
-     //////adicionado
-      $image->produto_id= $request->input('produto_id');
-
-      $image->save();
-
-      var_dump('imagem salva');
-*/
+		      // Check if it fails //
+		      if( $validation->fails() ){
+		    //  	 return 'falhanco';
+		         return redirect()->back()->withInput()
+		                          ->with('errors', $validation->errors() );
+		      }
+			
 
 		$produto= new Produto;
 
@@ -166,8 +131,9 @@ class ProdutoController extends Controller {
 		$images = Image::whereProduto_id($produto->id)->get();
 		$categoria_produto = Categoria::find($produto->categoria_id);
 		$categorias = Categoria::all();
+		$servicos = Servico::all();
 
-         return view('produto.show-produto',compact('produto','images','categoria_produto','categorias'));
+         return view('produto.show-produto',compact('produto','images','categoria_produto','categorias','servicos'));
 	}
 
 	/**
@@ -181,7 +147,9 @@ class ProdutoController extends Controller {
 		//
 		$produto =Produto::find($id);
 		$categorias = Categoria::all();
-		return view('produto.edit-produto',compact('produto','categorias'));
+		$servicos = Servico::all();
+
+		return view('produto.edit-produto',compact('produto','categorias','servicos'));
 	}
 
 	/**
@@ -203,6 +171,7 @@ class ProdutoController extends Controller {
 		$produto->isExist="true";
 		
 		$produto->save();
+		return redirect('produto/');
 	}
 
 	/**
@@ -219,7 +188,7 @@ class ProdutoController extends Controller {
 		$images = Image::whereProduto_id($produto->id)->delete();
 		$produto ->delete();
 
-		return redirect('produto/'); 
+		return redirect('tblprodutos/'); 
 	}
 
 	/**
@@ -241,10 +210,10 @@ class ProdutoController extends Controller {
 						->groupBy('produtos.nome')
 						->get();
 
+			$servicos = Servico::all();
 
 
-
-			return view('produto.list-produto',compact('produtos','categorias','images','produtos_imgs'));
+			return view('produto.list-produto',compact('produtos','categorias','images','produtos_imgs','servicos','categoria'));
 
 	}
 

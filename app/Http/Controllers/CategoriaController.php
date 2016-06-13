@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use DB;
 use App\Categoria;
 use App\Produto;
+use App\Servico;
+use Validator;
 
 class CategoriaController extends Controller {
 
@@ -27,8 +29,8 @@ class CategoriaController extends Controller {
 	{
 		//
 		$categorias = $categoria->get();
-
-		return view('categoria.list',compact('categorias'));
+		$servicos = Servico::all();
+		return view('categoria.list',compact('categorias','servicos'));
 	}
 
 	/**
@@ -39,8 +41,9 @@ class CategoriaController extends Controller {
 	public function create()
 	{
 		//
-		$categorias = Categoria::all();		
-		return view('categoria.add-categoria',compact('categorias'));
+		$categorias = Categoria::all();
+		$servicos = Servico::all();		
+		return view('categoria.add-categoria',compact('categorias','servicos'));
 
 	}
 
@@ -52,6 +55,20 @@ class CategoriaController extends Controller {
 	public function store(Request $request)
 	{
 		//
+		$validation = Validator::make($request->all(), [
+         'designacao'     => 'required|regex:/^[A-Za-z ]+$/',
+         
+	      ]);
+
+	      // Check if it fails //
+	      if( $validation->fails() ){
+	    
+
+	         return redirect()->back()->withInput()
+	                          ->with('errors', $validation->errors() );
+	      }
+		
+
 		$categoria = new Categoria;
 		$categoria->designacao=$request->input('designacao');
 		$categoria->descricao=$request->input('descricao');
@@ -82,8 +99,10 @@ class CategoriaController extends Controller {
 	{
 		//
 		$categoria = Categoria::whereId($id)->first();
+		$servicos = Servico::all();
+		$categorias=Categoria::all();
 
-		return view('categoria.edit-categoria',compact('categoria'));
+		return view('categoria.edit-categoria',compact('categoria','servicos','categorias'));
 	}
 
 	/**
@@ -95,6 +114,21 @@ class CategoriaController extends Controller {
 	public function update($id, Request $request)
 	{
 		//
+		$validation = Validator::make($request->all(), [
+         'designacao'     => 'required|regex:/^[A-Za-z ]+$/',
+         
+	      ]);
+
+	      // Check if it fails //
+	      if( $validation->fails() ){
+	    
+
+	         return redirect()->back()->withInput()
+	                          ->with('errors', $validation->errors() );
+	      }
+		
+		
+		
 		$categoria = Categoria::whereId($id)->first();
 		$categoria->designacao = $request->get('designacao'); 
 		$categoria->descricao =$request->get('descricao');

@@ -10,7 +10,8 @@ use App\User;
 use App\Texto;
 use App\Categoria;
 use Auth;
-
+use App\Servico;
+use App\Figura;
 
 
 
@@ -45,8 +46,10 @@ class HomeController extends Controller {
 	public function index()
 	{   $categorias = Categoria::all();
 		$textos = Texto::all();
-		
-		return view('inicio',compact('textos','categorias'));
+		$servicos = Servico::all();
+		$figuras = Figura::all();
+
+		return view('inicio',compact('textos','categorias','servicos','figuras'));
 	}
 
 }

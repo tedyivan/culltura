@@ -13,26 +13,20 @@ use Auth;
 use App\User;
 use App\Servico;
 use App\Servicoimage;
+use App\Figura;
 
-class ServicoController extends Controller {
+
+class FiguraController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	
-
 	public function index()
 	{
 		//
-		$categorias = Categoria::all();
-	
-		$servicos = Servico::all();	
-		$users=User::all(); 
 
-
-		return view('servico.list-servico',compact('servicos','categorias','users'));
 	}
 
 	/**
@@ -43,10 +37,6 @@ class ServicoController extends Controller {
 	public function create()
 	{
 		//
-		$categorias=Categoria::all();
-		$servicos = Servico::all();
-
-		return view('servico.add-servico',compact('categorias','servicos'));
 	}
 
 	/**
@@ -57,19 +47,22 @@ class ServicoController extends Controller {
 	public function store(Request $request)
 	{
 		//
-		$servico = new Servico();
-		$user = Auth::User();     
-         //$userId = $user->id;
 
-		$servico->designacao =$request->input('designacao');
-		$servico->descricao=$request->input('descricao');
-		$servico->user_id=$user->id;
-		$servico->isExist="true";
-		$servico->save();
+      $validation = Validator::make($request->all(), [
+         'nome'     => 'required|regex:/^[A-Za-z ]+$/',
+         'userfile'     => 'required'
+      ]);
 
-
-      	
-      	$servicoImage = new Servicoimage();
+      // Check if it fails //
+      if( $validation->fails() ){
+    //  	 return 'falhanco';
+         return redirect()->back()->withInput()
+                          ->with('errors', $validation->errors() );
+      }
+	
+      
+      
+      	$figura = new Figura();
 
       // upload the image //
 	      $file = $request->file('userfile');
@@ -78,16 +71,14 @@ class ServicoController extends Controller {
 	      $file->move($destination_path, $filename);
 	      
 	      // save image data into database //
-	      $servicoImage->file = $destination_path . $filename;
-	      $servicoImage->caption = $request->input('designacao');
+	      $figura->file = $destination_path . $filename;
+	      $figura->caption = $request->input('nome');
 	      //$image->description = $request->input('description');
-	      
-	      $servicoImage->isexist="true";
-	      
-	      $servicoImage->servico()->associate($servico);
-	      $servicoImage->save();
+	      $figura->posicao = $request->input('posicao');
+	      $figura->isexist="true";
+	      $figura->save();
 
-	      return redirect('/servico')->with('message','You just uploaded an image!');
+	 return redirect('/')->with('message','You just uploaded an image!');
 
       
 	}
@@ -101,12 +92,6 @@ class ServicoController extends Controller {
 	public function show($id)
 	{
 		//
-		$categorias=Categoria::all();
-		$servicos=Servico::all();
-		$servico=Servico::whereId($id)->first();
-		$servicoImages=Servicoimage::whereServico_id($servico->id)->get();
-
-		return view('servico.show-servico',compact('servico','categorias','servicoImages','servicos'));
 	}
 
 	/**
@@ -140,10 +125,10 @@ class ServicoController extends Controller {
 	public function destroy($id)
 	{
 		//
-		$servico=Servico::whereId($id)->first();
-		$servico->delete();
+		$figura=Figura::whereId($id)->first();
+		$figura->delete();
 
-		return redirect('/servico');	
+		return redirect('/')->with('message','Removido com sucesso.');
 	}
 
 }

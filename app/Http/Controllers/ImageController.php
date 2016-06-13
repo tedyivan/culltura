@@ -44,18 +44,20 @@ class ImageController extends Controller {
 		//
 
 		// Validation //
-     /*
+     
       $validation = Validator::make($request->all(), [
-         'caption'     => 'required|regex:/^[A-Za-z ]+$/',
-         'userfile'     => 'required|image|mimes:jpeg,png|min:1|max:250'
+         'nome'     => 'required|regex:/^[A-Za-z0-9]+$/',
+         'userfile'     => 'required'
       ]);
 
       // Check if it fails //
       if( $validation->fails() ){
+      	 return 'falhanco';
          return redirect()->back()->withInput()
                           ->with('errors', $validation->errors() );
       }
-	*/
+	
+
       
 
 
@@ -137,7 +139,7 @@ class ImageController extends Controller {
       $validation = Validator::make($request->all(), [
             'caption'     => 'required|regex:/^[A-Za-z ]+$/',
         //    'description' => 'required',
-            'userfile'    => 'sometimes|image|mimes:jpeg,png|min:1|max:250'
+            'userfile'    => 'sometimes|image|min:1|max:250'
       ]);
 
       // Check if it fails //

@@ -54,6 +54,7 @@ Route::group(['middleware' => 'auth'], function ()
 });
 
 
+Route::get('tblprodutos','AdministradorController@produtos');
 
 Route::group(['middleware' => 'auth'], function ()
 {
@@ -72,7 +73,9 @@ Route::group(['middleware' => 'auth'], function ()
 
 Route::resource('servico','ServicoController');
 
+Route::resource('servicoimage','ServicoImageController');
 
+Route::resource('figura','FiguraController');
 
 
 

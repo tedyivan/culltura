@@ -9,6 +9,8 @@ use App\User;
 use App\Texto;
 use App\Categoria;
 use Auth;
+use App\Servico;
+use App\Figura;
 
 
 class WelcomeController extends Controller {
@@ -42,8 +44,9 @@ class WelcomeController extends Controller {
 	public function index()
 	{	$categorias = Categoria::all();
 		$textos = Texto::all();
-
-		return view('inicio',compact('categorias','textos'));
+		$servicos = Servico::all();
+		$figuras = Figura::all();
+		return view('inicio',compact('categorias','textos','servicos','figuras'));
 	}
 
 }

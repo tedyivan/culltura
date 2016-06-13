@@ -9,6 +9,7 @@ use App\User;
 use App\Texto;
 use App\Categoria;
 use Auth;
+use App\Servico;
 
 class TextoController extends Controller {
 
@@ -17,12 +18,16 @@ class TextoController extends Controller {
 	 *
 	 * @return Response
 	 */
+	
+
 	public function index()
 	{
 		$textos= Texto::all();
 		$users=User::all();
 		$categorias=Categoria::all();
-		return view('texto.list-texto',compact('textos','users','categorias'));
+		$servicos = Servico::all();
+
+		return view('texto.list-texto',compact('textos','users','categorias','servicos'));
 	}
 
 	/**
@@ -34,7 +39,11 @@ class TextoController extends Controller {
 	{
 		//
 		$posicaos=array('0','1','2','3');
-		return view('texto.add-texto',compact('posicaos'));
+		$categorias=Categoria::all();
+		$servicos = Servico::all();
+		
+
+		return view('texto.add-texto',compact('posicaos','categorias','servicos'));
 	}
 
 	/**
@@ -81,7 +90,10 @@ class TextoController extends Controller {
 		//
 		$texto=Texto::whereId($id)->first();
 		$posicaos=array('0','1','2','3');
-		return view('texto.edit-texto',compact('texto','posicaos'));
+		$servicos = Servico::all();
+		$categorias=Categoria::all();
+
+		return view('texto.edit-texto',compact('texto','posicaos','servicos','categorias'));
 	}
 
 	/**

@@ -46,6 +46,17 @@
        	$('#modalcategoria').modal('show');
        }
 
+       $(document).on("click", ".uppicserve", function () {
+       var servicoId = $(this).data('id');
+       $(".modal-body #servico_id").val( servicoId );
+       // As pointed out in comments, 
+       // it is superfluous to have to manually call the modal.
+       // $('#addBookDialog').modal('show');
+  });
+
+
+      
+
 
       
 

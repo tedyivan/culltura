@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\ServicoImage;
+use App\Servicoimage;
 
 class ServicoImageController extends Controller {
 
@@ -33,16 +33,16 @@ class ServicoImageController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
 		//
-		$imagens=ServicoImage::whereProduto_id($request->input('servico_id'))->get();
+		$imagens=Servicoimage::whereServico_id($request->input('servico_id'))->get();
       	$nr_imagens=count($imagens);
 
       
       if ($nr_imagens < 3 ){
       	# code...
-      	$servicoImage = new ServicoImage;
+      	$servicoImage = new Servicoimage();
 
       // upload the image //
 	      $file = $request->file('userfile');
@@ -54,15 +54,16 @@ class ServicoImageController extends Controller {
 	      $servicoImage->file = $destination_path . $filename;
 	      $servicoImage->caption = $request->input('nome');
 	      //$image->description = $request->input('description');
-	      $servicoImage->produto_id = $request->input('servico_id');
+	      $servicoImage->servico_id = $request->input('servico_id');
 	      $servicoImage->isexist="true";
 	      $servicoImage->save();
 
-	      return redirect('/servico')->with('message','You just uploaded an image!');
+	 return redirect('/servico')->with('message','You just uploaded an image!');
 
       }
       else {
       	 return "Excedeu o numero de imagens";
+		}
 	}
 
 	/**
@@ -71,9 +72,11 @@ class ServicoImageController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
+
 	public function show($id)
 	{
 		//
+		
 	}
 
 	/**

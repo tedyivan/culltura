@@ -64,7 +64,7 @@
 	background: #eee;
 }
 .about-content{
-	background-color: blue;
+	
 	height: 100%;
 }
 
@@ -84,5 +84,41 @@
 	text-align: center;
 	text-transform: uppercase;
 	font-weight: bold;
+	padding-bottom: 14px;
+	font:24px normal Oxygen;
 }
 
+/*cria nova linha*/
+p{
+    white-space:pre-wrap;
+ }
+
+/*corta o numero de linhas que devem aparecer*/
+ .corta{
+				
+	height:20px;
+    line-height:20px; 
+    overflow:hidden;
+}
+
+.btn-add-fig{
+	 padding-top: 20px;
+	 text-align: right;
+}
+
+.quadrinho{
+	position: relative;
+	overflow: hidden;
+}
+
+.baixos-overlay{
+	position: absolute;
+	background: rgba(0,0,0,.5);
+	width: 100%;
+	height: 100%;
+				
+}
+
+.quadrinho:hover .baixos-overlay{
+	top:0;
+}
